@@ -1,0 +1,10 @@
+[project]
+name = "llm-compare"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = [
+    "openvino-genai",
+    "optimum-intel[openvino]>=2.0.0",
+    "torch",
+    "transformers",
+]
