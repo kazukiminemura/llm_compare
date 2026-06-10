@@ -33,16 +33,16 @@ def main():
     hf_output = tokenizer.decode(hf_encoded_output[0, encoded_prompt.shape[1]:])
     print(f"hf_output: {hf_output}")
 
-    # pipe = ov_genai.LLMPipeline(ov_model_path, "CPU")
-    # ov_encoded_output = pipe.generate(
-    #     ov.Tensor(encoded_prompt.numpy()),
-    #     max_new_tokens=max_new_tokens,
-    #     do_sample=False,
-    # )
-    # ov_output = tokenizer.decode(ov_encoded_output.tokens[0])
-    # print(f"ov_output: {ov_output}")
+    pipe = ov_genai.LLMPipeline(ov_model_path, "CPU")
+    ov_encoded_output = pipe.generate(
+        ov.Tensor(encoded_prompt.numpy()),
+        max_new_tokens=max_new_tokens,
+        do_sample=False,
+    )
+    ov_output = tokenizer.decode(ov_encoded_output.tokens[0])
+    print(f"ov_output: {ov_output}")
 
-    # assert hf_output == ov_output
+    assert hf_output == ov_output
 
 
 if __name__ == "__main__":
